@@ -1,73 +1,44 @@
-# React + TypeScript + Vite
+# Self - Health Dashboard
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Personal health dashboard for weight loss tracking with adaptive forecasting, diet planning, exercise logging, and gamified achievements.
 
-Currently, two official plugins are available:
+## Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- React 18 + TypeScript + Vite
+- Tailwind CSS 4
+- Recharts (charts)
+- date-fns (date utilities)
+- Vercel (deployment)
 
-## React Compiler
+## Data files
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+All personal data lives in `src/data/`:
 
-## Expanding the ESLint configuration
+- **`config.json`** — Profile (height, age, weight target), plan mode, diet restrictions
+- **`weight-log.json`** — Daily weight entries: `{ date, weight_kg, notes }`
+- **`exercise-log.json`** — Daily exercise + diet adherence
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### Daily workflow
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+1. Edit `weight-log.json` with today's morning weight
+2. Edit `exercise-log.json` with today's activities
+3. Commit and push — Vercel auto-redeploys
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## Development
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm install
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Build
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm run build
 ```
+
+## Deployment
+
+Connected to Vercel for auto-deploy on push to `main`. A GitHub Actions cron job triggers daily redeployment at 03:00 ART.
+
+To set up the daily cron: add a `VERCEL_DEPLOY_HOOK` secret in GitHub repo settings with your Vercel deploy hook URL.

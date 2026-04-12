@@ -1,0 +1,15 @@
+[
+  {
+    "date": "2026-04-13",
+    "activities": [
+      {
+        "type": "walking",
+        "duration_min": 60,
+        "intensity": "standard",
+        "location": "treadmill",
+        "notes": "Caminata en caminadora del gimnasio"
+      }
+    ],
+    "diet_adherence": 100
+  }
+]

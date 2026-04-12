@@ -1,0 +1,27 @@
+{
+  "profile": {
+    "height_cm": 180,
+    "age": 42,
+    "gender": "male",
+    "start_date": "2026-04-13",
+    "start_weight_kg": 113.9,
+    "target_weight_kg": 80
+  },
+  "plan": {
+    "mode": "decidido",
+    "diet_type": "mediterranean_keto",
+    "fasting": "16:8",
+    "restrictions": {
+      "no_bread": true,
+      "minimal_rice": true,
+      "reduced_legumes": true,
+      "high_fish": true,
+      "high_nuts": true,
+      "no_added_sugar": true,
+      "no_salt_use_pepper": true,
+      "no_ultra_processed": true,
+      "beverages": ["water", "fresh_juice_low_sugar_1_2_weekly"]
+    }
+  },
+  "forecast_end_date": "2027-12-31"
+}
