@@ -28,7 +28,8 @@ export default function WeightChart() {
       const now = new Date();
       const days = range === '7d' ? 7 : range === '30d' ? 30 : 90;
       const cutoff = new Date(now.getTime() - days * 24 * 60 * 60 * 1000).toISOString().split('T')[0];
-      data = data.filter(d => d.date >= cutoff);
+      const today = now.toISOString().split('T')[0];
+      data = data.filter(d => d.date >= cutoff && d.date <= today);
     }
 
     return data;
