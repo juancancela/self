@@ -11,5 +11,15 @@
       }
     ],
     "diet_adherence": 100
+  },
+  {
+    "date": "2026-04-16",
+    "activities": [
+      {
+        "type": "walking",
+        "duration_min": 60,
+        "intensity": "standard"
+      }
+    ]
   }
 ]
